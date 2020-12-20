@@ -5,4 +5,7 @@ class User
     @bank = 100
   end
 
+  def take_cards
+
+  end
 end
