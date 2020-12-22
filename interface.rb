@@ -1,4 +1,4 @@
-class Interface
+module Interface
   def initialize
 
   end
