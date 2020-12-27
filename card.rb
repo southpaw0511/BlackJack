@@ -1,7 +1,7 @@
 class Card
   attr_accessor :rank, :suit, :value
 
-  SUITS = ['♤', '♡', '♢', '♧']
+  SUITS = ['♤', '♡', '♢', '♧'].freeze
   VALUE = {
     '2' => 2,
     '3' => 3,
@@ -16,7 +16,7 @@ class Card
     'Q' => 10,
     'K' => 10,
     'A' => 11
-  }
+  }.freeze
 
   def initialize(rank, suit, value)
     @rank = rank
@@ -29,22 +29,22 @@ class Card
   end
 
   def to_s(hidden: false)
-    unless hidden
-  "   ┌───────┐
-   │#{rank}      │
-   │       │
-   │   #{suit}   │
-   │       │
-   │      #{rank}│
-   └───────┘"
-     else
-  '   ┌───────┐
-   │░░░░░░░│
-   │       │
-   │░░░░░░░│
-   │       │
-   │░░░░░░░│
-   └───────┘'
+    if hidden
+      '   ┌───────┐
+       │░░░░░░░│
+       │       │
+       │░░░░░░░│
+       │       │
+       │░░░░░░░│
+       └───────┘'
+    else
+      "   ┌───────┐
+       │#{rank}      │
+       │       │
+       │   #{suit}   │
+       │       │
+       │      #{rank}│
+       └───────┘"
     end
   end
 end

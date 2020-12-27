@@ -1,11 +1,11 @@
 class Interface
-  DEALER_PASS = 'Dealer skip a move'
+  DEALER_PASS = 'Dealer skip a move'.freeze
 
-  DEALER_HIT = 'Dealer take a card'
+  DEALER_HIT = 'Dealer take a card'.freeze
 
-  DRAW_MESSAGE = 'Draw!'
+  DRAW_MESSAGE = 'Draw!'.freeze
 
-  WELCOME_MESSAGE = 'Welcome. Enter your name:'
+  WELCOME_MESSAGE = 'Welcome. Enter your name:'.freeze
 
   def initialize
     puts WELCOME_MESSAGE
@@ -62,11 +62,11 @@ class Interface
   def show_assets(last_round, player, dealer)
     system('clear')
     puts "#{player.name}:"
-    puts "#{player.bank}"
+    puts player.bank.to_s
     InlinePrinter.new.print(player.cards)
     puts "Your score: #{player.score}"
     puts '--------------------'
-    puts "#{dealer.bank}"
+    puts dealer.bank.to_s
     puts 'Dealer:'
     if last_round == true
       InlinePrinter.new.print(dealer.cards)

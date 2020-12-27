@@ -1,9 +1,9 @@
 class Bank
   attr_reader :amount
 
-  NOT_ENOUGH_MONEY = 'Insufficient funds!'
+  NOT_ENOUGH_MONEY = 'Insufficient funds!'.freeze
 
-  def initialize(amount=0)
+  def initialize(amount = 0)
     @amount = amount
   end
 

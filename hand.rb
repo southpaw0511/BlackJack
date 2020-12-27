@@ -1,7 +1,7 @@
 class Hand
   attr_accessor :cards
 
-  MAX_CARD_WARNING = 'У вас уже 3 карты.'
+  MAX_CARD_WARNING = 'You already have 3 cards'.freeze
 
   def initialize
     @cards = []

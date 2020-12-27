@@ -1,7 +1,6 @@
 # графоний (лол)
 
 class InlinePrinter
-  
   def print(figures)
     result = []
     figures.each do |figure|

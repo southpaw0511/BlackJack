@@ -17,7 +17,7 @@ class Game
     dealer_turn: 1,
     hit: 2,
     reveal: 3
-  }
+  }.freeze
 
   def initialize
     @interface = Interface.new
@@ -52,13 +52,11 @@ class Game
   private
 
   def define_winner
-    if player_won?
-      @winner = @player
-    elsif dealer_won?
-      @winner = @dealer
-    else
-      @winner = nil
-    end
+    @winner = if player_won?
+                @player
+              elsif dealer_won?
+                @dealer
+              end
   end
 
   def player_won?
@@ -98,7 +96,7 @@ class Game
         break if choice == PLAYER_ACTIONS[:reveal]
         break if !@player.can_take_card? && !@dealer.can_take_card?
         @interface.show_last_options
-      rescue => e
+      rescue StandardError => e
         puts e.message
         retry
       end
@@ -148,11 +146,11 @@ class Game
   end
 
   def dealer_turn
-    unless @dealer.can_take_card?
-      @interface.dealer_pass_message
-    else
+    if @dealer.can_take_card?
       @dealer.add_card(@new_deck.deal_card)
       @interface.dealer_hit_message
+    else
+      @interface.dealer_pass_message
     end
   end
 end
