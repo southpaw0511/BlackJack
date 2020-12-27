@@ -11,7 +11,7 @@ class Card
     '7' => 7,
     '8' => 8,
     '9' => 9,
-    '10' => 10,
+    'X' => 10,
     'J' => 10,
     'Q' => 10,
     'K' => 10,
@@ -22,6 +22,10 @@ class Card
     @rank = rank
     @suit = suit
     @value = value
+  end
+
+  def ace?
+    @rank == 'A'
   end
 
   def to_s(hidden: false)

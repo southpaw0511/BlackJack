@@ -1,3 +1,0 @@
-class Diller < User
-
-end
