@@ -63,17 +63,64 @@ class Interface
     system('clear')
     puts "#{player.name}:"
     puts player.bank.to_s
-    InlinePrinter.new.print(player.cards)
+    create(player.cards)
     puts "Your score: #{player.score}"
     puts '--------------------'
     puts dealer.bank.to_s
     puts 'Dealer:'
     if last_round == true
-      InlinePrinter.new.print(dealer.cards)
+      create(dealer.cards)
       puts puts "Dealer score: #{dealer.score}"
     else
-      InlinePrinter.new.print_masked(dealer.cards)
+      print_masked(dealer.cards)
     end
   end
 
+  # Drawing card
+  # ---------------------------------------------------
+
+  def to_s(hidden: false)
+    if hidden
+      '       ┌───────┐
+       │░░░░░░░│
+       │       │
+       │░░░░░░░│
+       │       │
+       │░░░░░░░│
+       └───────┘'
+    else
+      "       ┌───────┐
+       │#{rank}      │
+       │       │
+       │   #{suit}   │
+       │       │
+       │      #{rank}│
+       └───────┘"
+    end
+  end
+  
+  def create(figures)
+    result = []
+    figures.each do |figure|
+      figure.to_s.split("\n").each_with_index do |line, idx|
+        result[idx] ? result[idx] << " #{line}" : result[idx] = line
+      end
+    end
+    result.each { |line| puts line }
+    nil
+  end
+
+  def print_masked(figures)
+    result = []
+    figures.each do |figure|
+      figure.to_s(hidden: true).split("\n").each_with_index do |line, idx|
+        result[idx] ? result[idx] << " #{line}" : result[idx] = line
+      end
+    end
+    result.each { |line| puts line }
+    nil
+  end
+
+  # End drawing card
+  # -------------------------------------------------------
 end
