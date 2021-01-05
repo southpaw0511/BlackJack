@@ -30,7 +30,7 @@ class Card
 
   def to_s(hidden: false)
     if hidden
-      '   ┌───────┐
+      '       ┌───────┐
        │░░░░░░░│
        │       │
        │░░░░░░░│
@@ -38,7 +38,7 @@ class Card
        │░░░░░░░│
        └───────┘'
     else
-      "   ┌───────┐
+      "       ┌───────┐
        │#{rank}      │
        │       │
        │   #{suit}   │

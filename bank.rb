@@ -7,12 +7,12 @@ class Bank
     @amount = amount
   end
 
-  def to_s
-    "Balance: #{@amount}$"
-  end
-
   def amount_zero?
     @amount == 0
+  end
+
+  def to_s
+    @amount
   end
 
   def debit(amount)

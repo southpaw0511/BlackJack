@@ -75,4 +75,5 @@ class Interface
       InlinePrinter.new.print_masked(dealer.cards)
     end
   end
+
 end
